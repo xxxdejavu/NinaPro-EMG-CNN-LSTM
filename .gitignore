@@ -1,0 +1,19 @@
+# IDE
+.idea/
+
+# Claude Code 本地设置
+.claude/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# 数据（原始数据 3.2GB，不入库）
+data/
+
+# 训练产物（可从训练重新生成）
+checkpoints/
+
+# 虚拟环境
+venv/
+.venv/
