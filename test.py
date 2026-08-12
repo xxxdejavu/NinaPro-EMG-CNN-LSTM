@@ -1,13 +1,13 @@
 import torch
 from dataset import *
-from model import *
+from cnn_bilstm import *
 
 from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-model = CNN_LSTM(23)
+model = CNN_BiLSTM(23)
 
 model.load_state_dict(torch.load("./checkpoints/best_model.pth", map_location=device))
 model.to(device)

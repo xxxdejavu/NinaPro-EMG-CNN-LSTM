@@ -41,8 +41,8 @@ X_test = scaler.transform(X_test)
 def create_windows(
         X,
         y,
-        window_size=100,
-        stride=50
+        window_size=200,
+        stride=100
 ):
 
     X_windows=[]
@@ -83,21 +83,15 @@ def create_windows(
 X_train_win,y_train_win=create_windows(
     X_train,
     y_train,
-    window_size=100,
-    stride=50
 )
 X_val_win,y_val_win=create_windows(
     X_val,
     y_val,
-    window_size=100,
-    stride=50
 )
 
 X_test_win,y_test_win=create_windows(
     X_test,
     y_test,
-    window_size=100,
-    stride=50
 )
 y_train_win = y_train_win - 1
 y_val_win = y_val_win - 1
@@ -130,3 +124,6 @@ test_dataset = EMGDataset(
     y_test_win
 )
 test_loader = DataLoader(test_dataset, batch_size=64, shuffle=False)
+# print(X_train_win.shape)
+# print(X_val_win.shape)
+# print(X_test_win.shape)

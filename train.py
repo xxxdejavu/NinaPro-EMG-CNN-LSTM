@@ -1,7 +1,7 @@
 import torch
 import time
 from dataset import *
-from model import *
+from cnn_bilstm import *
 
 def train_one_epoch(model, loader, criterion, optimizer, device):
     model.train()
