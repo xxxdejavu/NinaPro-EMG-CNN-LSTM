@@ -5,7 +5,7 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 
 
-path = r"D:\Python Projects\20260810EMG_CNN_LSTM\data\raw\Ninapro_DB1.csv"
+path = r"./data/raw/Ninapro_DB1.csv"
 
 df = pd.read_csv(path)
 
@@ -96,6 +96,14 @@ X_test_win,y_test_win=create_windows(
 y_train_win = y_train_win - 1
 y_val_win = y_val_win - 1
 y_test_win = y_test_win - 1
+
+def rms_features(X_windows, num_sub=20):
+    """(N, 200, 10) → (N, num_sub, 10)：每个子窗取 RMS"""
+    N = X_windows.shape[0]
+    sub_len = X_windows.shape[1] // num_sub
+    X = X_windows.reshape(N, num_sub, sub_len, -1)
+    return np.sqrt(np.mean(X ** 2, axis=2))
+
 
 class EMGDataset(Dataset):
     def __init__(self, X, y):
